@@ -45,7 +45,13 @@
     --smokey-grey: hsl(0, 1%, 44%);
     --off-black: hsl(0, 0%, 8%);
     --purple: hsl(259, 100%, 65%);
-    --Light-red: hsl(0, 100%, 67%);
+    --light-red: hsl(0, 100%, 67%);
+}
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -61,22 +67,107 @@ body{
 main {
     background-color: var(--white);
     padding: 3rem;
+    margin: 1rem;
     border-radius: 1.5rem;
-    border-bottom-right-radius: 5rem;
+    border-bottom-right-radius: 15rem;
+    max-width: 60rem;
+    min-width: 38%;
 }
 
-form {
+.form__num {
     display: flex;
     gap: 2rem;
 }
 
-.form__block {
-    
+.form__num__block {
 }
 
-.form__block__input,
-.form__block__label {
+.form__num__block__input,
+.form__num__block__label {
     display: block;
 }
 
+.form__num__block__label {
+text-transform: uppercase;
+font-weight: 700;
+color: var(--smokey-grey);
+}
 
+.form__num__block__input {
+    padding: 0.8rem;
+    border: 1px solid var(--light-grey);
+    font-size: 2rem;
+    font-weight: 900;
+    max-width: 9rem;
+    border-radius: 0.5rem;
+}
+
+/* hide spinner from user */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+}
+input[type="number"]{
+    -moz-appearance:textfield;
+}
+
+.form__num__block__input:focus {
+    outline: 1px solid var(--purple);
+}
+
+.form__num__block__error {
+    color: var(--light-red); 
+    font-style: italic;
+}
+
+.form__submit {
+    display: flex;
+    align-items: center;
+}
+
+.form__submit__line {
+    border: 1px solid var(--light-grey);
+    flex-grow: 1;
+    height: 0;
+}
+
+.form__submit__line-right {
+    display: none;
+}
+
+.form__submit__button {
+    background: transparent;
+    border-radius: 50%;
+}
+
+.form__submit__button__image:hover {
+    cursor: pointer;
+    background-color: var(--off-black);
+}
+
+.form__submit__button__image {
+    background: var(--purple);
+    padding: 1.5rem;
+    border-radius: 50%;
+}
+
+.output {
+    font-weight: 900;
+    font-size: 6.2rem;
+    font-style: italic;
+}
+
+.output__block__number {
+    color: var(--purple);
+}
+
+.output__block__unit {
+    color: var(--off-black);
+}
+
+
+@media (orientation: portrait){
+    .form__submit__line-right {
+	display: block;
+    } 
+}
