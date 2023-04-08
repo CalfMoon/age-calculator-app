@@ -1,21 +1,16 @@
 {
-  "name": "age-calculator-app-main",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "age-calculator-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CalfMoon/age-calculator-app.git"
+  "devDependencies": {
+    "vite": "^4.2.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CalfMoon/age-calculator-app/issues"
-  },
-  "homepage": "https://github.com/CalfMoon/age-calculator-app#readme",
   "dependencies": {
     "dayjs": "^1.11.7"
   }
