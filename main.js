@@ -8,7 +8,6 @@ const main = () => {
   };
 };
 
-
 const calcAge = (birthYear, birthMonth, birthDate) => {
   if(validCheck(birthYear, birthMonth, birthDate)) return null;
 
@@ -76,3 +75,4 @@ const removeErrorsMessages = () => {
     errorArr[i].innerHTML = "";
   };
 };
+

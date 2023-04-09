@@ -70,8 +70,8 @@ main {
     margin: 1rem;
     border-radius: 1.5rem;
     border-bottom-right-radius: 15rem;
-    max-width: 60rem;
-    min-width: 38%;
+    max-width: 52rem;
+    min-width: 40%;
 }
 
 .form__num {
