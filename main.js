@@ -40,7 +40,6 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
   for(let i = 0; i<dateArr.length; i++){
     // empty input field
     if(dateArr[i] === "") {
-      console.log(dateArr);
       errorArr[i].innerHTML = "This field is required";
       wrong = true;
     };
