@@ -1,7 +1,11 @@
+import dayjs from "dayjs";
+
+const [inpDay, inpMonth, inpYear] = document.querySelectorAll(".form__num__block__input");
+const displayArr = document.querySelectorAll(".output__block__number");
+
+
 const main = () => {
   removeErrorsMessages();
-  const [inpYear, inpMonth, inpDay] = document.querySelectorAll(".form__num__block__input");
-  const displayArr = document.querySelectorAll(".output__block__number");
   const diffArr = calcAge(inpYear.value, inpMonth.value, inpDay.value);
   for(let i = 0; i<displayArr.length; i++){
     displayArr[i].innerHTML = diffArr[i];
@@ -11,11 +15,11 @@ const main = () => {
 const calcAge = (birthYear, birthMonth, birthDate) => {
   if(validCheck(birthYear, birthMonth, birthDate)) return null;
 
-  const birth = dayjs(`${birthYear}-${birthMonth}-${birthDate}`);
+  const birthFullDate = dayjs(`${birthYear}-${birthMonth}-${birthDate}`);
 
   const today = dayjs();
-  const diffYear = today.diff(birth, "y");
-  const diffMonth = today.diff(birth, "M") - 12 * diffYear;
+  const diffYear = today.diff(birthFullDate, "y");
+  const diffMonth = today.diff(birthFullDate, "M") - 12 * diffYear;
   // x is the value that is used to count number backwards when birthday is after today eg going from 15 to 30 to again 5
   const x = birthDate <= today.date() ? 0 : today.daysInMonth();
   const diffDate =  x + today.date() - birthDate;
@@ -32,23 +36,25 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
   const birthFullDate = dayjs(`${birthYear}-${birthMonth}-${birthDate}`);
 
   let wrong = false;
-  const dateArr = [birthYear, birthMonth, birthDate];
+  const dateArr = [birthDate, birthMonth, birthYear];
   for(let i = 0; i<dateArr.length; i++){
     // empty input field
     if(dateArr[i] === "") {
-    errorArr[i].innerHTML = "This field is required";
+      console.log(dateArr);
+      errorArr[i].innerHTML = "This field is required";
       wrong = true;
     };
   };
 
-  if (birthDate > birthFullDate.daysInMonth() || birthDate === 0) {
+  if (birthDate > birthFullDate.daysInMonth() || birthDate === "0") {
     // day doesn't exist
     errorDay.innerHTML = "Must be a valid day";
     wrong = true;
   }
-  if (birthMonth > 12 || birthMonth === 0){
+
+  if (birthMonth > 12 || birthMonth === "0"){
     // month doesn't exist
-    errorDay.innerHTML = "Must be a valid day";
+    errorMonth.innerHTML = "Must be a valid month";
     wrong = true;
   };
 
@@ -62,6 +68,8 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
     for(let i = 0; i < inpBoxArr.length; i++){
       inpBoxArr[i].style.borderColor = "var(--light-red)";
       labelArr[i].style.color = "var(--light-red)";
+
+      displayArr[i].innerHTML = "--";
     };
   };
   return wrong;
@@ -76,3 +84,4 @@ const removeErrorsMessages = () => {
   };
 };
 
+document.querySelector(".form__submit__button").addEventListener("click", main);

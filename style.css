@@ -76,10 +76,11 @@ main {
 
 .form__num {
     display: flex;
-    gap: 2rem;
+    gap: 3.5rem;
 }
 
 .form__num__block {
+    max-width: 9rem;
 }
 
 .form__num__block__input,
@@ -91,6 +92,7 @@ main {
 text-transform: uppercase;
 font-weight: 700;
 color: var(--smokey-grey);
+letter-spacing: 0.15rem;
 }
 
 .form__num__block__input {
@@ -98,8 +100,10 @@ color: var(--smokey-grey);
     border: 1px solid var(--light-grey);
     font-size: 2rem;
     font-weight: 900;
-    max-width: 9rem;
+    width: 100%;
     border-radius: 0.5rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
 }
 
 /* hide spinner from user */
@@ -107,8 +111,9 @@ input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button{
     -webkit-appearance:none;
 }
+
 input[type="number"]{
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
 
 .form__num__block__input:focus {
@@ -118,6 +123,7 @@ input[type="number"]{
 .form__num__block__error {
     color: var(--light-red); 
     font-style: italic;
+    font-size: 0.9rem;
 }
 
 .form__submit {
@@ -155,6 +161,7 @@ input[type="number"]{
     font-weight: 900;
     font-size: 6.2rem;
     font-style: italic;
+    line-height: 1.1em;
 }
 
 .output__block__number {
@@ -166,8 +173,26 @@ input[type="number"]{
 }
 
 
-@media (orientation: portrait){
+@media (max-width: 700px){
     .form__submit__line-right {
 	display: block;
     } 
+}
+
+@media (max-width: 840px) {
+    .output {
+	font-size: 5.2rem;
+    }
+}
+
+@media (max-width: 590px) {
+    .output {
+	font-size: 4.2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .output {
+	font-size: 3.2rem;
+    }
 }
