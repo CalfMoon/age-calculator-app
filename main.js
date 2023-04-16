@@ -17,7 +17,7 @@ const animation = (displayLocation, endNumber) => {
   let startNumber = 0;
   const duration = Math.floor(interval / endNumber);
   let counter = setInterval(() => {
-    displayLocation.innerHTML = startNumber;
+    displayLocation.textContent = startNumber;
     if (startNumber === endNumber) clearInterval(counter);
     startNumber++;
   }, duration);
@@ -52,26 +52,26 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
   for(let i = 0; i<dateArr.length; i++){
     // empty input field
     if(dateArr[i] === "") {
-      errorArr[i].innerHTML = "This field is required";
+      errorArr[i].textContent = "This field is required";
       wrong = true;
     };
   };
 
   if (birthDate > birthFullDate.daysInMonth() || birthDate === "0") {
     // day doesn't exist
-    errorDay.innerHTML = "Must be a valid day";
+    errorDay.textContent = "Must be a valid day";
     wrong = true;
   }
 
   if (birthMonth > 12 || birthMonth === "0"){
     // month doesn't exist
-    errorMonth.innerHTML = "Must be a valid month";
+    errorMonth.textContent = "Must be a valid month";
     wrong = true;
   };
 
   if(dayjs().diff(birthFullDate)<0){
     // day in the future
-    errorYear.innerHTML = "Must be in the past";
+    errorYear.textContent = "Must be in the past";
     wrong = true;
   };
 
@@ -80,7 +80,7 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
       inpBoxArr[i].style.borderColor = "var(--light-red)";
       labelArr[i].style.color = "var(--light-red)";
 
-      displayArr[i].innerHTML = "--";
+      displayArr[i].textContent = "--";
     };
   };
   return wrong;
@@ -95,7 +95,7 @@ const removeErrorsMessages = () => {
   for(let i = 0; i<inpBoxArr.length; i++) {
     inpBoxArr[i].style.borderColor = "var(--light-grey)";
     labelArr[i].style.color = "var(--smokey-grey)";
-    errorArr[i].innerHTML = "";
+    errorArr[i].textContent = "";
   };
 };
 
