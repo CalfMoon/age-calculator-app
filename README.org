@@ -1,0 +1,67 @@
+* Frontend Mentor -
+This is a solution to the [[https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q][Age calculator app challenge on Frontend Mentor]]. Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+
+** Table of contents 
+- [[Table of contents][Table of content]]
+- [[Overview][Overview]]
+  - [[The challenge][The challenge]]
+  - [[Screenshot][Screenshot]]
+  - [[Links][Links]]
+- [[My process][My process]]
+  - [[Built with][Built with]]
+  - [[What I learned][What i learned]]
+  - [[Useful resources][Useful resources]]
+- [[Author][Author]]
+  
+** Overview
+
+*** The challenge
+
+Users should be able to:
+
+- View an age in years, months, and days after submitting a valid date through the form
+- Receive validation errors if:
+  - Any field is empty when the form is submitted
+  - The day number is not between 1-31
+  - The month number is not between 1-12
+  - The year is in the future
+  - The date is invalid e.g. 31/04/1991 (there are 30 days in April)
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+ **Bonus**: See the age numbers animate to their final number when the form is submitted
+
+*** Screenshot
+
+[[./assets/images/Screenshot.png]]
+
+*** Links
+
+- Solution URL: [[https://github.com/CalfMoon/age-calculator-app][here]]
+- Live Site URL: [[https://melodic-kheer-0a64ee.netlify.app/][here]]
+
+** My process
+
+*** Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+
+*** What I learned
+
+#+BEGIN_SRC javascript
+  const x = birthDate <= today.date() ? 0 : today.daysInMonth();
+  const diffDate =  x + today.date() - birthDate;
+#+END_SRC
+
+This is the code snippet I'm proud of because I spent hours thinking of a way to subtract days that have been counted in year and months so that I can subtract that number from the difference in days and I encounterd many problem with this method as not all years have 365, not all months have same number of days and most importantly, I have to start counting from the middle of the month and end in the middle of the month.
+So, I came up with this code snippet that subtracts days from the starting months from the days in the current month and if the answer comes in negative it adds numbers of days in current month to the calculation.
+
+*** Useful resources
+
+- [[https://www.sitepoint.com/delay-sleep-pause-wait/][delayed code execution]] - This helped me for because I wanted the year, month and day animation to happen one after another but they would happen asynchronously and I had no knowledge of async .. await this website helped me animate number in correct order.
+
+** Author
+
+- Frontend Mentor - [[https://www.frontendmentor.io/profile/CalfMoon][@CalfMoon]]

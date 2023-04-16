@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-const submitHandel = (e) => {
+const submitHandel = async (e) => {
   const [inpDay, inpMonth, inpYear] = document.querySelectorAll(".form__num__block__input");
   const displayArr = document.querySelectorAll(".output__block__number");
   e.preventDefault();
@@ -8,8 +8,21 @@ const submitHandel = (e) => {
   if(validCheck(inpYear.value, inpMonth.value, inpDay.value)) return null;
   const diffArr = calcAge(inpYear.value, inpMonth.value, inpDay.value);
   for(let i = 0; i<displayArr.length; i++){
-    displayArr[i].innerHTML = diffArr[i];
+    await animation(displayArr[i], diffArr[i]);
   };
+};
+
+const animation = (displayLocation, endNumber) => {
+  const interval = 300;
+  let startNumber = 0;
+  const duration = Math.floor(interval / endNumber);
+  let counter = setInterval(() => {
+    displayLocation.innerHTML = startNumber;
+    if (startNumber === endNumber) clearInterval(counter);
+    startNumber++;
+  }, duration);
+// wait for previous output to be counted before starting another one
+  return new Promise((resolve) => setTimeout(resolve, interval));
 };
 
 const calcAge = (birthYear, birthMonth, birthDate) => {
