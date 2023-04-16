@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 
-const [inpDay, inpMonth, inpYear] = document.querySelectorAll(".form__num__block__input");
-const displayArr = document.querySelectorAll(".output__block__number");
-
-
-const main = () => {
+const submitHandel = (e) => {
+  const [inpDay, inpMonth, inpYear] = document.querySelectorAll(".form__num__block__input");
+  const displayArr = document.querySelectorAll(".output__block__number");
+  e.preventDefault();
   removeErrorsMessages();
+  if(validCheck(inpYear.value, inpMonth.value, inpDay.value)) return null;
   const diffArr = calcAge(inpYear.value, inpMonth.value, inpDay.value);
   for(let i = 0; i<displayArr.length; i++){
     displayArr[i].innerHTML = diffArr[i];
@@ -13,8 +13,6 @@ const main = () => {
 };
 
 const calcAge = (birthYear, birthMonth, birthDate) => {
-  if(validCheck(birthYear, birthMonth, birthDate)) return null;
-
   const birthFullDate = dayjs(`${birthYear}-${birthMonth}-${birthDate}`);
 
   const today = dayjs();
@@ -27,12 +25,13 @@ const calcAge = (birthYear, birthMonth, birthDate) => {
   return [diffYear, diffMonth, diffDate];
 };
 
-const inpBoxArr = document.querySelectorAll(".form__num__block__input");
-const labelArr = document.querySelectorAll(".form__num__block__label");
-const errorArr = document.querySelectorAll(".form__num__block__error");
-const [errorDay, errorMonth, errorYear] = errorArr;
-
 const validCheck = (birthYear, birthMonth, birthDate) => {
+  const inpBoxArr = document.querySelectorAll(".form__num__block__input");
+  const labelArr = document.querySelectorAll(".form__num__block__label");
+  const errorArr = document.querySelectorAll(".form__num__block__error");
+  const [errorDay, errorMonth, errorYear] = errorArr;
+  const displayArr = document.querySelectorAll(".output__block__number");
+
   const birthFullDate = dayjs(`${birthYear}-${birthMonth}-${birthDate}`);
 
   let wrong = false;
@@ -76,6 +75,10 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
 
 
 const removeErrorsMessages = () => {
+  const inpBoxArr = document.querySelectorAll(".form__num__block__input");
+  const labelArr = document.querySelectorAll(".form__num__block__label");
+  const errorArr = document.querySelectorAll(".form__num__block__error");
+
   for(let i = 0; i<inpBoxArr.length; i++) {
     inpBoxArr[i].style.borderColor = "var(--light-grey)";
     labelArr[i].style.color = "var(--smokey-grey)";
@@ -83,4 +86,4 @@ const removeErrorsMessages = () => {
   };
 };
 
-document.querySelector(".form__submit__button").addEventListener("click", main);
+document.querySelector("form").addEventListener("submit", submitHandel);
