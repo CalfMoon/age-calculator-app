@@ -36,7 +36,7 @@ Users should be able to:
 
 *** Links
 
-- Solution URL: [[https://github.com/CalfMoon/age-calculator-app][here]]
+- Solution URL: [[https://www.frontendmentor.io/solutions/age-calculator-page-using-dayjs-jx6wYNGRrq][here]]
 - Live Site URL: [[https://melodic-kheer-0a64ee.netlify.app/][here]]
 
 ** My process
