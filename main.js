@@ -57,7 +57,9 @@ const validCheck = (birthYear, birthMonth, birthDate) => {
     };
   };
 
-  if (birthDate > birthFullDate.daysInMonth() || birthDate === "0") {
+  console.log();
+
+  if (birthDate > dayjs(`${birthYear}-${birthMonth}`).daysInMonth() || birthDate === "0") {
     // day doesn't exist
     errorDay.textContent = "Must be a valid day";
     wrong = true;
